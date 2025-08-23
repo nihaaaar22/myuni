@@ -5,10 +5,11 @@ import { redirect } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import CreateModuleDialog from "@/components/teacher/CreateModuleDialog"
 import Image from "next/image"
+import ChatWidget from "@/components/chat/ChatWidget"
 
 export default async function TeacherClassroomManage({ params }: { params: { id: string } }) {
   const session = await getServerSession(authOptions)
-  if (!session) redirect("/auth/teacher")
+  if (!session || !session.user?.email) redirect("/auth/teacher")
 
   const classroom = await prisma.classrooms.findUnique({ where: { id: params.id } })
   if (!classroom || classroom.teacher_id !== session.user.id) redirect("/teacher/classrooms")
@@ -57,6 +58,8 @@ export default async function TeacherClassroomManage({ params }: { params: { id:
           </div>
         )}
       </div>
+
+      <ChatWidget classroomId={params.id} userEmail={session.user.email} />
     </div>
   )
 }
