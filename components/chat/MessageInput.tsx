@@ -22,7 +22,7 @@ export default function MessageInput({ onSendMessage, disabled }: MessageInputPr
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 border-t bg-white flex items-center space-x-2">
+    <form onSubmit={handleSubmit} className="p-4 border-t flex items-center space-x-2">
       <Input
         type="text"
         value={message}

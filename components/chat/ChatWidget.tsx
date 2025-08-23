@@ -38,7 +38,7 @@ export default function ChatWidget({ classroomId, userEmail }: ChatWidgetProps) 
 
   return (
     <div className="fixed bottom-8 right-8 w-[400px] h-[600px] z-50">
-      <Card className="h-full flex flex-col shadow-2xl bg-white rounded-xl">
+      <Card className="h-full flex flex-col shadow-2xl">
         <CardHeader className="flex flex-row items-center justify-between p-4 border-b">
           <div className="flex items-center space-x-2">
             <CardTitle className="text-lg">Classroom Chat</CardTitle>
